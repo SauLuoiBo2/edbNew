@@ -1,1 +1,3 @@
-export * from "./Home";
+import * as HomePages from './HomePages';
+
+export { HomePages };

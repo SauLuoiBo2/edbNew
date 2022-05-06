@@ -1,7 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-interface Props {}
-export default createGlobalStyle<Props>`
+export const GlobalStyle = createGlobalStyle`
   *,
   *::before,
   *::after {
@@ -21,10 +20,10 @@ export default createGlobalStyle<Props>`
     font-size: 62.5%;
     background-color: #eef0f1;
     box-sizing: border-box;
-    @media ${(props) => props.theme.breakpoints.lg} {
+    @media ${(props) => props.theme.breakpoint.lg} {
       font-size: 60%;
     }
-    @media ${(props) => props.theme.breakpoints.md} {
+    @media ${(props) => props.theme.breakpoint.md} {
       font-size: 55%;
     }
     --color-title: ${(props) => props.theme.palette.text.main};
@@ -32,7 +31,6 @@ export default createGlobalStyle<Props>`
 
   }
   body {
-
     font-size: 1.6rem;
     font-weight: 400;
     line-height: 1.6;
@@ -101,7 +99,7 @@ h1,h2,h3,h4,h5,h6,button {
     .container{
       padding: 0 30rem;
 
-      @media ${(props) => props.theme.breakpoint.xl} {
+      @media ${(props) => props.theme.breakpoint.xxl} {
         padding: 0 15rem;
     }
 

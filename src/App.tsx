@@ -1,13 +1,24 @@
-import { Home } from "pages";
-import { Mama, Ma } from "./components";
+import { HomePages } from 'pages';
+import styled from 'styled-components';
+import { Route, Routes, Navigate } from 'react-router-dom';
+import { Layout } from 'example';
 
 function App() {
-  return (
-    <div>
-      <Ma />
-      <Home />
-    </div>
-  );
+    return (
+        <Routes>
+            <Route element={<Layout.HomeLayout />}>
+                <Route index element={<HomePages.HomePage />} />
+            </Route>
+        </Routes>
+    );
 }
 
 export default App;
+
+type Props = {
+    isOpen: boolean;
+};
+
+const Test = styled.div<Props>`
+    color: ${(props) => (props.isOpen ? 'red' : 'blue')};
+`;

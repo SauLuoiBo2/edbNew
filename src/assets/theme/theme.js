@@ -1,5 +1,6 @@
 import { colors, breakpoints } from './base';
-import baseStyled, { ThemedStyledInterface } from 'styled-components';
+import { createTheme } from '@mui/material/styles';
+import { ThemeOptions as ThemeOptionsOld } from '@mui/material/styles/createTheme';
 
 export const defaultTheme = {
     breakpoints: { ...breakpoints },
@@ -18,9 +19,10 @@ export const defaultTheme = {
     },
 };
 
-export type Theme = typeof defaultTheme;
-export const styled = baseStyled as ThemedStyledInterface<Theme>;
+export const themeMui = createTheme({
+    ...defaultTheme,
+});
 
-function getBreakpoint(number: number) {
-    return `only screen and (max-width: ${number})`;
+function getBreakpoint(number) {
+    return `only screen and (max-width: ${number}px)`;
 }
