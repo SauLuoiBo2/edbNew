@@ -26,6 +26,9 @@ export const GlobalStyle = createGlobalStyle`
     @media ${(props) => props.theme.breakpoint.md} {
       font-size: 55%;
     }
+
+    /* color */
+    --color-main: ${(props) => props.theme.palette.primary.main};
     --color-title: ${(props) => props.theme.palette.text.main};
     --bs-primary: #dc1928;
 
@@ -97,7 +100,7 @@ h1,h2,h3,h4,h5,h6,button {
     }
 
     .container{
-      padding: 0 30rem;
+      padding: 0 20rem;
 
       @media ${(props) => props.theme.breakpoint.xxl} {
         padding: 0 15rem;
