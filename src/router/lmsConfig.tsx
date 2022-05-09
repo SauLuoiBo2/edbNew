@@ -1,3 +1,7 @@
+import { imageSource } from 'assets';
+import { Image } from 'components';
+import { LmsPages } from 'pages';
+
 const data = [
     {
         name: 'He thong',
@@ -5,17 +9,17 @@ const data = [
             {
                 name: 'cau hinh chung',
                 path: 'cau-hinh-chung',
-                element: <div>dsaasd</div>,
+                element: <LmsPages.ConfigPage />,
             },
             {
                 name: 'danh sach chu de',
                 path: 'danh-sach-chu-de',
-                element: <div>dsaasd</div>,
+                element: <LmsPages.ListChapterPage />,
             },
             {
                 name: 'danh sach don vi kien thuc',
                 path: 'danh-sach-don-vi-kien-thuc',
-                element: <div>dsaasd</div>,
+                element: <LmsPages.ListUnitPage />,
             },
         ],
     },
@@ -116,6 +120,10 @@ class LmsConfig {
     constructor() {
         this.data = data;
     }
+    getData = () => {
+        return this.data;
+    };
+
     getRouters = () => {
         const routers: { path: string; element: any; breadcrumb: any }[] = [];
 

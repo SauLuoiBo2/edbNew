@@ -8,6 +8,7 @@ import { ReactElement, JSXElementConstructor, ReactFragment, ReactPortal, Key } 
 import { LmsLayout } from 'example/layout';
 import { Image } from 'components';
 import { imageSource } from 'assets';
+import { TestLayout } from 'example/layout/TestLayout';
 
 function App() {
     return (
@@ -26,8 +27,8 @@ function App() {
                 })}
             </Route>
 
-            <Route path={'/lms'} element={<Auth.RequireAuth allowedRoles={['ADMIN']} />}>
-                <Route element={<LmsLayout />}>
+            <Route element={<Auth.RequireAuth allowedRoles={['ADMIN']} />}>
+                <Route path={'/lms'} element={<LmsLayout />}>
                     {lmsConfig.getRouters().map((item, i) => {
                         return <Route path={item.path} element={item.element} key={i} />;
                     })}
