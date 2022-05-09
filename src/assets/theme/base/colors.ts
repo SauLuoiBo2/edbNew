@@ -1,6 +1,7 @@
 export const colors = {
     background: {
         default: '#f8f9fa',
+        home: '#fcf0f1',
     },
 
     text: {

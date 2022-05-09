@@ -14,4 +14,10 @@ export class ImagePath {
         const path = 'images/' + this.path + '/' + name + '.jpeg';
         return path;
     }
+    getSvg(name: string) {
+        const path = 'images/' + this.path + '/' + name + '.svg';
+        return path;
+    }
 }
+
+export const imagePath = new ImagePath();

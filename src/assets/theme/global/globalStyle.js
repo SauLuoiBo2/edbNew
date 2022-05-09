@@ -32,6 +32,9 @@ export const GlobalStyle = createGlobalStyle`
     --color-title: ${(props) => props.theme.palette.text.main};
     --bs-primary: #dc1928;
 
+    /* backgrond */
+    --color-bg-home: ${(props) => props.theme.palette.background.home};
+
   }
   body {
     font-size: 1.6rem;

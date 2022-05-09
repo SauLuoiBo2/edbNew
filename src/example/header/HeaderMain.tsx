@@ -26,7 +26,7 @@ type HeaderProps = {
 
 const Style = {
     Header: styled.header<HeaderProps>`
-        position: sticky;
+        position: fixed;
         display: block;
         top: 0;
         width: 100%;

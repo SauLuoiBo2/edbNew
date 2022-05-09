@@ -2,14 +2,17 @@ import { Header, Footer } from 'example';
 import React from 'react';
 import styled from 'styled-components';
 import { Outlet } from 'react-router-dom';
+import { HeaderLms } from './components';
 
-export const HomeLayout = () => {
+export const LmsLayout: React.FC = () => {
     return (
         <>
             <Header.HeaderMain />
+            <HeaderLms />
             <Style.Main>
                 <Outlet />
             </Style.Main>
+
             <Footer.MainFooter />
         </>
     );
@@ -17,9 +20,8 @@ export const HomeLayout = () => {
 
 const Style = {
     Main: styled.main`
-        display: block;
         width: 100%;
-        overflow-x: hidden;
+        display: block;
     `,
     Nav: styled.nav`
         min-width: 300px;

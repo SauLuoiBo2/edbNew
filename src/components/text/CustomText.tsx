@@ -1,9 +1,14 @@
 import { CustomTextEnum } from 'assets/enum/CustomTextEnum';
 import React from 'react';
 
-type Props = { children?: React.ReactNode; text?: string; variant?: CustomTextEnum; style?: any };
+interface Props extends React.HTMLAttributes<HTMLDivElement> {
+    children?: React.ReactNode;
+    text?: string;
+    variant?: CustomTextEnum;
+    style?: any;
+}
 
-export const CustomText = ({ children, text, variant = CustomTextEnum.main, style }: Props, { ...rest }) => {
+export const CustomText = ({ children, text, variant = CustomTextEnum.main, style, ...rest }: Props) => {
     let sizes: any = {};
 
     switch (variant) {

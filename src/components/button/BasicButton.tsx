@@ -1,15 +1,19 @@
-import { Stack } from '@mui/material';
+import { Stack, StackProps } from '@mui/material';
 import { CustomTextEnum } from 'assets/enum/CustomTextEnum';
 import { CustomText } from 'components/text';
 import React from 'react';
 import styled from 'styled-components';
 
-type Props = { name: string; onClick: () => void };
+interface Props extends StackProps {
+    name: string;
+    onClick: () => void;
+}
 
-export const BasicButton: React.FC<Props> = ({ name, onClick }) => {
+export const BasicButton: React.FC<Props> = (props) => {
+    const { name, onClick } = props;
     return (
         <Style.Wrapper onClick={onClick}>
-            <Stack justifyContent={'center'} px={2} py={1} color={'white.main'}>
+            <Stack direction={'row'} justifyContent={'center'} px={2} py={1} color={'white.main'} {...props}>
                 <CustomText variant={CustomTextEnum.bodyMain} text={name} />
             </Stack>
         </Style.Wrapper>
@@ -17,12 +21,12 @@ export const BasicButton: React.FC<Props> = ({ name, onClick }) => {
 };
 
 const Style = {
-    Wrapper: styled.div`
+    Wrapper: styled.button`
         background-color: var(--color-main);
         border-radius: 10px;
         cursor: pointer;
         :hover {
-            transform: translateY(-3px) scale(1.05);
+            transform: translateY(-3px);
         }
     `,
 };

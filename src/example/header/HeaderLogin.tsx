@@ -5,21 +5,23 @@ import React from 'react';
 import { CustomTextEnum } from 'assets/enum/CustomTextEnum';
 
 const dataContent = {
-    about: 'Chào mừng đến với EBD',
+    about: 'Hệ thống quản lý Hoc và thi trực tuyến EBD LMS',
 };
 
 export const HeaderLogin = () => {
     return (
         <Stack
             sx={{ height: '100%' }}
-            alignItems={'center'}
+            alignItems={'flex-start'}
             justifyContent={'center'}
-            bgcolor={'primary.focus'}
+            bgcolor={'grey.600'}
             py={5}
+            px={1}
             spacing={2}
+            pl={2}
         >
             <Image.ImageLogo src={imageSource.LOGO} w='60%' />
-            <Text.CustomText variant={CustomTextEnum.bodyMain} text={dataContent.about} />
+            <Text.TitleText text={dataContent.about} />
         </Stack>
     );
 };

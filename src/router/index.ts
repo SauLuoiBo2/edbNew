@@ -1,2 +1,2 @@
-export * from './AuthRouter';
-export * from './LoginRouter';
+export * from './config';
+export * from './lmsConfig';

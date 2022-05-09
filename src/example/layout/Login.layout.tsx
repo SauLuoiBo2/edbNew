@@ -3,14 +3,14 @@ import { HeaderLogin } from 'example/header';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
-export const LoginLayout = () => {
+export const LoginLayout: React.FC<any> = () => {
     return (
         <Grid container>
             <Item>
                 <HeaderLogin />
             </Item>
             <Item>
-                <Stack alignItems={'center'} justifyContent='center' py={5}>
+                <Stack alignItems={'center'} justifyContent='center' py={5} sx={{ height: '100%' }}>
                     <Outlet />
                 </Stack>
             </Item>
