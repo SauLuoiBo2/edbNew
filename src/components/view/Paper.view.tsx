@@ -1,14 +1,21 @@
-import { Stack } from '@mui/material';
+import { Box, BoxProps } from '@mui/material';
 import React from 'react';
 
-type Props = {
+interface Props extends BoxProps {
     children: React.ReactNode;
-};
+}
 
-export const PaperView: React.FC<Props> = ({ children }) => {
+export const PaperView: React.FC<Props> = ({ children, ...rest }) => {
     return (
-        <Stack p={2} borderRadius={2} justifyContent={'center'}>
+        <Box
+            {...rest}
+            bgcolor={'white.main'}
+            sx={{ boxShadow: '0 0 20px 0 rgb(76 87 125 / 2%)' }}
+            py={1}
+            px={2}
+            borderRadius={2}
+        >
             {children}
-        </Stack>
+        </Box>
     );
 };

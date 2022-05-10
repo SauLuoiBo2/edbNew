@@ -1,6 +1,6 @@
 import { alpha, styled } from '@mui/material/styles';
-import InputBase from '@mui/material/InputBase';
-import { TextField } from '@mui/material';
+import InputBase, { InputBaseProps } from '@mui/material/InputBase';
+import { FormControl, InputLabel, TextField } from '@mui/material';
 
 export const TextInput = styled(InputBase)(({ theme }) => ({
     'label + &': {
@@ -96,3 +96,24 @@ export const IconInput = styled(TextField)(({ theme }) => ({
         // },
     },
 }));
+
+export const MuiInputLabel = styled(InputLabel)(({ theme }) => ({
+    fontSize: '20px',
+    color: theme.palette.common.black,
+}));
+
+interface InputTextFormI extends InputBaseProps {
+    label?: string | undefined;
+    required?: boolean;
+}
+
+export const InputTextForm = (props: InputTextFormI) => {
+    return (
+        <FormControl variant='standard' required={props.required}>
+            <MuiInputLabel shrink htmlFor='bootstrap-input'>
+                {props.label}:
+            </MuiInputLabel>
+            <TextInput required={props.required} />
+        </FormControl>
+    );
+};

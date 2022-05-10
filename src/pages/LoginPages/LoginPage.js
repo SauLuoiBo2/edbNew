@@ -1,7 +1,7 @@
 import { Stack } from '@mui/material';
 import { CustomTextEnum } from 'assets/enum/CustomTextEnum';
 import { Button, Text } from 'components';
-import { IconInput } from 'components/input';
+
 import React from 'react';
 import * as Mui from '@mui/material';
 import { AccountCircle, Visibility, VisibilityOff, Key } from '@mui/icons-material';
@@ -13,6 +13,8 @@ import { useFormik } from 'formik';
 import { authKey, queryAuth } from 'api';
 
 import { useQuery } from 'react-query';
+import { MuiInput } from 'components/input';
+import authApi from 'api/axios/auth/authApi';
 
 const dataContent = {
     LOGIN: 'Đăng nhập hệ thống LMS',
@@ -60,7 +62,7 @@ export const LoginPage = () => {
             <Text.CustomText variant={CustomTextEnum.bodyMain} text={dataContent.LOGIN} />
 
             <Stack component={'form'} spacing={2} onSubmit={formik.handleSubmit}>
-                <IconInput
+                <MuiInput.IconInput
                     placeholder={'Nhập tai khoan'}
                     name='username'
                     type='text'
@@ -76,7 +78,7 @@ export const LoginPage = () => {
                     error={formik.touched.username && Boolean(formik.errors.username)}
                     helperText={formik.touched.username && formik.errors.username}
                 />
-                <IconInput
+                <MuiInput.IconInput
                     placeholder={'Nhập mat khau'}
                     name='password'
                     type='text'

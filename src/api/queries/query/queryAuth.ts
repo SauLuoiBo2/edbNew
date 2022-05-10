@@ -2,7 +2,8 @@ import { queryClient } from '../config';
 import authApi from 'api/axios/auth/authApi';
 import { useQuery, UseQueryResult } from 'react-query';
 import { authKey } from '../keys/auth.key';
-import { loginI } from 'api/model';
+
+import { loginI } from 'api/axios/auth/model';
 
 export const queryAuth = () => {
     const getAccessToken = () => {

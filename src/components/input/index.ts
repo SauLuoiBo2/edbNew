@@ -1,1 +1,1 @@
-export * from './MuiInput';
+export * as MuiInput from './MuiInput';
