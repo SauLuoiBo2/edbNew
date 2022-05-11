@@ -2,7 +2,7 @@ import axiosClient from '../axiosClient';
 
 class ExamTimeApi {
     constructor() {
-        this.api = 'time-type/';
+        this.api = 'test-time/';
     }
     search = () => {
         const url = `${this.api}search`;
