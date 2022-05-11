@@ -1,14 +1,14 @@
 import { useQuery } from 'react-query';
 
 import { configKey } from 'api/queries';
-import { examTypeApi } from 'api/axios';
+import { examTimeApi } from 'api/axios';
 
-export const useExamType = () => {
+export const useExamTime = () => {
     const search = useQuery(
         configKey.EXAM_TYPE,
         async () => {
-            const res = await examTypeApi.search();
-            return res;
+            const res = await examTimeApi.search();
+            return res.data;
         },
         { refetchOnMount: true, staleTime: Infinity }
     );

@@ -1,10 +1,15 @@
 import { alpha, styled } from '@mui/material/styles';
 import InputBase, { InputBaseProps } from '@mui/material/InputBase';
+import { StandardTextFieldProps } from '@mui/material';
 import { FormControl, InputLabel, TextField } from '@mui/material';
 
-export const TextInput = styled(InputBase)(({ theme }) => ({
+export const TextInput = styled(TextField)(({ theme }) => ({
     'label + &': {
         marginTop: theme.spacing(3),
+    },
+
+    '& .MuiFormHelperText-root': {
+        fontSize: 13,
     },
     '& .MuiInputBase-input': {
         borderRadius: 4,
@@ -102,18 +107,20 @@ export const MuiInputLabel = styled(InputLabel)(({ theme }) => ({
     color: theme.palette.common.black,
 }));
 
-interface InputTextFormI extends InputBaseProps {
+interface InputTextFormI extends StandardTextFieldProps {
     label?: string | undefined;
     required?: boolean;
+    helperText?: any;
 }
 
 export const InputTextForm = (props: InputTextFormI) => {
+    const { label, required, helperText, ...rest } = props;
     return (
-        <FormControl variant='standard' required={props.required}>
+        <FormControl variant='standard' required={required}>
             <MuiInputLabel shrink htmlFor='bootstrap-input'>
-                {props.label}:
+                {label}:
             </MuiInputLabel>
-            <TextInput required={props.required} />
+            <TextInput helperText={helperText} required={required} {...rest} />
         </FormControl>
     );
 };

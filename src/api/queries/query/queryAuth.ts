@@ -14,9 +14,9 @@ export const queryAuth = () => {
     const login: (props: loginI) => Promise<any> = async ({ username, password }) => {
         const res = await authApi.login({ username, password });
         console.log(res.data);
-        window.localStorage.setItem(authKey.ACCESS_TOKEN, res.data.token);
-        window.localStorage.setItem(authKey.REFRESH_TOKEN, res.data.refreshToken);
-        queryClient.setQueryData(authKey.AUTH, { token: res.data.token, role: res.data.role });
+        window.localStorage.setItem(authKey.ACCESS_TOKEN, res.data.access_token);
+        window.localStorage.setItem(authKey.REFRESH_TOKEN, res.data.refresh_token);
+        queryClient.setQueryData(authKey.AUTH, { token: res.data.access_token, role: res.data.user.role });
         console.log(queryClient.getQueriesData(authKey.AUTH), 'auth');
         return res.data;
     };

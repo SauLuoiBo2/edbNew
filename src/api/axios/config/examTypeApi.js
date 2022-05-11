@@ -1,5 +1,7 @@
+import { configKey } from 'api/queries';
 import { AxiosResponse } from 'axios';
 import * as Modal from 'model';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
 import axiosClient from '../axiosClient';
 
 class ExamTypeApi {
@@ -15,8 +17,46 @@ class ExamTypeApi {
         };
         return axiosClient.post(url, body);
     };
+
+    useSearch = () => {
+        return useQuery(configKey.EXAM_TYPE, this.search);
+    };
+
+    add = (name, description) => {
+        const url = `${this.api}add`;
+        const body = { name: name, description: description };
+        return axiosClient.post(url, body);
+    };
+
+    useAdd = () => {
+        const queryClient = useQueryClient();
+        return useMutation(
+            async (data) => {
+                return await examTypeApi.add(data.name, data.description);
+            },
+            {
+                onSuccess: () => {
+                    queryClient.invalidateQueries(configKey.EXAM_TYPE);
+                },
+            }
+        );
+    };
 }
 
 const examTypeApi = new ExamTypeApi();
 
-export default examTypeApi;
+export { examTypeApi };
+
+export const useExamTypeAdd = () => {
+    const queryClient = useQueryClient();
+    return useMutation(
+        async (data) => {
+            return await examTypeApi.add(data.name, data.description);
+        },
+        {
+            onSuccess: () => {
+                queryClient.invalidateQueries(configKey.EXAM_TYPE);
+            },
+        }
+    );
+};

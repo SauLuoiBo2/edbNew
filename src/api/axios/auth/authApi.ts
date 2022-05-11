@@ -13,7 +13,7 @@ class AuthApi {
     constructor() {
         this.api = 'user/';
     }
-    login: ({ username, password }: loginI) => Promise<AxiosResponse<ResLogin>> = ({ username, password }: loginI) => {
+    login: ({ username, password }: loginI) => Promise<AxiosResponse<any>> = ({ username, password }: loginI) => {
         const url = `${this.api}login`;
         const body = {
             username: username,

@@ -1,18 +1,34 @@
 import React from 'react';
-import { MuiTableWrapper } from 'components/table';
+import { MuiTableWrapper, MuiTableCell, MuiTableRow } from 'components/table';
 import { Stack } from '@mui/material';
-import { ModalCreateNew } from 'example/modal';
+
 import { Button } from 'components';
 import { useIsOpen } from 'hooks';
 import { CreateConfig } from 'screens';
+import { queryExamTime } from 'api/queries/query/config/queryExamTime';
 
 export const ExamTime = () => {
     const modal = useIsOpen();
+    const { useData } = queryExamTime();
+    const data: any = useData().data?.data;
+    console.log(data);
     return (
         <Stack spacing={2} pt={1}>
             <CreateConfig.ExamTime isOpen={modal.isOpen} onClose={modal.handleToggle} />
             <Button.LmsButton.AddNew onClick={modal.handleToggle} />
-            <MuiTableWrapper dataColumn={dataColumn}></MuiTableWrapper>
+            <MuiTableWrapper dataColumn={dataColumn}>
+                {data &&
+                    data.data?.map((data: any, i: any) => {
+                        return (
+                            <MuiTableRow key={i}>
+                                <MuiTableCell align='center'>{i + 1}</MuiTableCell>
+                                <MuiTableCell align='center'>{data.time}</MuiTableCell>
+                                <MuiTableCell align='center'>{data.description}</MuiTableCell>
+                                <MuiTableCell align='center'>hi</MuiTableCell>
+                            </MuiTableRow>
+                        );
+                    })}
+            </MuiTableWrapper>
         </Stack>
     );
 };
